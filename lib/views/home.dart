@@ -77,9 +77,16 @@ class _HomeState extends State<Home> {
                 20.heightBox,
                 Text(
                   data['time'],
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 66,
                     color: blackColor,
+                    shadows: [
+                      Shadow(
+                        offset: const Offset(2, 4),
+                        blurRadius: 6,
+                        color: blackColor.withOpacity(0.2),
+                      ),
+                    ],
                   ),
                 ),
 
