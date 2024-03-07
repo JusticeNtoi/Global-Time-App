@@ -1,6 +1,7 @@
 
 import 'dart:ui';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:global_time/services/world_time.dart';
@@ -37,12 +38,52 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       backgroundColor: blueColor1,
-      body: Center(
-        child: SpinKitThreeBounce(
-          color: whiteColor,
-          size: 100.0,
+      body: Container(
+        decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/images/worldtime.jpg'),
+              fit: BoxFit.cover,
+            )
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 60, vertical: 30),
+              decoration: BoxDecoration(
+                color: whiteColor.withOpacity(0.2),
+                borderRadius: BorderRadius.circular(20.0),
+                border: Border.all(
+                  color: whiteColor.withOpacity(0.9),
+                  width: 2.5,
+                ),
+              ),
+              child: Text(
+                "WORLD TIME",
+                style: TextStyle(
+                  fontSize: 40,
+                  fontWeight: FontWeight.bold,
+                  color: whiteColor,
+                  shadows: [
+                    Shadow(
+                      offset: const Offset(2, 4),
+                      blurRadius: 6,
+                      color: blackColor.withOpacity(0.2),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            20.heightBox,
+            const Center(
+              child: SpinKitCircle(
+                color: whiteColor,
+                size: 100.0,
+              ),
+            ),
+          ],
         ),
       ),
     );

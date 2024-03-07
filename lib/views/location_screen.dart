@@ -4,7 +4,8 @@ import 'package:global_time/services/world_time.dart';
 import 'package:global_time/views/colors.dart';
 
 class LocationScreen extends StatefulWidget {
-  const LocationScreen({super.key});
+
+  const LocationScreen({super.key,});
 
   @override
   State<LocationScreen> createState() => _LocationScreenState();
@@ -40,19 +41,23 @@ class _LocationScreenState extends State<LocationScreen> {
   @override
   Widget build(BuildContext context) {
 
-    // String appBarColor = data['isDayTime'] ? blueColor1 : brownColor;
-    // Color backgroundColor = data['isDayTime'] ? blueColor2 : brownColor2);
+    var args = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
+    var isDayTime = args['isDayTime'];
+
+    Color appBarColor = isDayTime ? blueColor1 : brownColor;
+    Color backgroundColor = isDayTime ? blueColor3 : brownColor2;
     
     return Scaffold(
-      backgroundColor: blueColor3,
+      backgroundColor: backgroundColor,
       appBar: AppBar(
         foregroundColor: whiteColor,
-        backgroundColor: blueColor1,
+        backgroundColor: appBarColor,
         title: const Text('Choose a Location'),
         centerTitle: true,
         elevation: 0,
       ),
       body: ListView.builder(
+        physics: const BouncingScrollPhysics(),
         itemCount: locations.length,
         itemBuilder: (BuildContext context, int index) {
           return Padding(

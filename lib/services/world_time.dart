@@ -34,7 +34,7 @@ class WorldTime {
       now = now.add(Duration(hours: int.parse(offset)));
 
       // Set the Time
-      isDayTime = now.hour > 6 && now.hour < 6 ? true : false;
+      isDayTime = now.hour > 5 && now.hour < 19 ? true : false;
       time = DateFormat.jm().format(now);
     } catch (e) {
       time = 'Could not get Time data!';

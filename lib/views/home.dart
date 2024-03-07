@@ -39,15 +39,21 @@ class _HomeState extends State<Home> {
 
                 TextButton.icon(
                   onPressed: () async {
-                    dynamic result = await Navigator.pushNamed(context, '/location');
-                    setState(() {
-                      data = {
-                       'time': result['time'],
-                       'location': result['location'],
-                       'isDayTime': result['isDayTime'],
-                       'flag': result['flag'],
-                      };
-                    });
+                    dynamic result = await Navigator.pushNamed(
+                      context, '/location',
+                      arguments: {'isDayTime': data['isDayTime']},
+                    );
+
+                    if (result != null) {
+                      setState(() {
+                        data = {
+                          'time': result['time'],
+                          'location': result['location'],
+                          'isDayTime': result['isDayTime'],
+                          'flag': result['flag'],
+                        };
+                      });
+                    }
                   },
                   icon: const Icon(
                     Icons.edit_location,
